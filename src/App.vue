@@ -1,6 +1,14 @@
 <script setup>
+import BlogPost from './components/BlogPost.vue';
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue';
+
+const posts = ref([
+  {id:1, title: 'My journey with Vue'},
+  {id:2, title: 'Blogging with Vue'},
+  {id:3, title: 'Why vue is so fun'}
+])
 </script>
 
 <template>
@@ -13,7 +21,12 @@ import TheWelcome from './components/TheWelcome.vue'
   </header>
 
   <main>
-    <TheWelcome />
+    <!-- <TheWelcome /> -->
+    <BlogPost
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+    />
   </main>
 </template>
 
